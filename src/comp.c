@@ -1,4 +1,5 @@
 #include "comp.h"
+#include <stdlib.h>
 #include <string.h>
 
 const char *symbols = "0123456789abcdef";
@@ -24,4 +25,13 @@ int nr_len_in_base(int nr, int base){
   );
 
   return nr % base ? rslt-1 : rslt;
+}
+
+char* str_from_nr(int nr, int base){
+  char *rslt;
+  int lenf = nr_len_in_base(nr, base), iter;
+  rslt = (char*) calloc(1, lenf+1);
+  for(iter=lenf-1; iter > -1; iter--, nr/=base)
+    rslt[iter]=symbols[nr%base];
+  return rslt;
 }
