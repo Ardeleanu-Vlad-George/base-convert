@@ -1,10 +1,11 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "defs.h"
 #include "io.h"
 #include "comp.h"
+
+#define DEBUG
 
 int main(int argc, char* argv[]){
   if(2 == argc && 0 == strcmp(HELP_STR, argv[1])){
@@ -18,8 +19,12 @@ int main(int argc, char* argv[]){
   int src = atoi(argv[1]), dst = atoi(argv[3]);
   int nr = nr_from_str(src, argv[2]);
   char *new_form = str_from_nr(nr, dst);
-  printf("%s\n", new_form);
-  printf("%d\n", nr_from_str(src, argv[2]));
-  printf("%d\n", nr_len_in_base(nr, dst));
+  #ifdef DEBUG
+    printf("NEW_FORM:%s\n", new_form);
+    printf("DEC_FORM:%d\n", nr);
+    printf("FORM_LEN:%d\n", nr_len_in_base(nr, dst));
+  #else
+    printf("%d\n", new_form);
+  #endif
   return 0;
 }

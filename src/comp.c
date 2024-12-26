@@ -24,7 +24,7 @@ int nr_len_in_base(int nr, int base){
     powr*=base, rslt++
   );
 
-  return nr % base ? rslt-1 : rslt;
+  return nr != powr ? rslt-1 : rslt;
 }
 
 char* str_from_nr(int nr, int base){
