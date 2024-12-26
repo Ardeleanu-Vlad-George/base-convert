@@ -13,3 +13,15 @@ int nr_from_str(int base, char *txt){
     rslt+=powr*(int)(strchr(symbols, txt[lenf-1-iter]) - symbols); 
   return rslt;
 }
+
+int nr_len_in_base(int nr, int base){
+  int rslt, powr;
+
+  for(
+    powr=1, rslt=1;
+    powr < nr; 
+    powr*=base, rslt++
+  );
+
+  return nr % base ? rslt-1 : rslt;
+}
