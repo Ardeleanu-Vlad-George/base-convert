@@ -1,6 +1,6 @@
 TRG := out/baseconvert
 
-OBJ := obj/main.o obj/io.o 
+OBJ := obj/main.o obj/io.o obj/comp.o
 
 $(TRG) : $(OBJ)
 	gcc -o $@ $^
